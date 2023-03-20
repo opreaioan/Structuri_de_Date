@@ -1,4 +1,4 @@
-// Problema 4
+// Problema 4 
 // Se considera un vector V cu "nr" elemente numere naturale. Sa se construiasca 
 // un al doilea vector W, care contine fiecare element din V, care are în componenta
 // doar cifre impare, duplicându-le.(1p)
