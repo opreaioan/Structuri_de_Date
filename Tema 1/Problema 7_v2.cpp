@@ -38,7 +38,7 @@ void citireElevi(std::vector < std::tuple <elev>>& elevi)
 {
 	std::string nume, prenume, linie;
 	int nota1, nota2, nota3;
-	std::ifstream f("fisierElevi.txt");
+	std::ifstream f("fisierEleviPb7.txt");
 
 	while (std::getline(f, linie))
 	{
