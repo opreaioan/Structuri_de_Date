@@ -1,4 +1,5 @@
-// Problema 7 Varianta 1:
+// Problema 7 Varianta 1: am respectat sintaxa din cerinta problemei, 
+// si anume std::vector<std::tuple<std::string, std::string, int, int, int> >.
 // Se citesc dintr-un fisier un numar de elevi. Fiecare elev are un nume, un prenume si 3
 // note, numere naturale. Se va folosi pentru un elev un tuple cu campurile nume si prenume
 // de tip string si cu trei campuri de note de tip int. Elevii vor fi memorati intr-un 
