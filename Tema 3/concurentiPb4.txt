@@ -1,0 +1,18 @@
+
+Competitie1:
+name one
+nume doi
+nume trei
+
+Competitie2:
+nume doi
+nume patru
+
+Competitie3:
+nume patru
+nume cinci
+nume sase
+
+Competitie4:
+nume cinci
+nume sase
