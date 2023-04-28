@@ -40,7 +40,7 @@ void meniu();
 
 int main()
 {
-	std::ifstream f("hashtablePb1.txt");
+	std::ifstream f("Problema 01.txt");
 	int n, first, second, opt;
 	std::string optiune;
 	f >> n;
