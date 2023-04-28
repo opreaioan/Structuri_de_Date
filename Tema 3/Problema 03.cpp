@@ -26,7 +26,7 @@ int main()
 	return 0;
 }
 void citireSiruri(std::string& s1, std::string& s2) {
-	std::ifstream f("siruriPb3.txt");
+	std::ifstream f("Problema 03.txt");
 	if (!std::getline(f, s1)) {
 		std::cout << "Eroare la deschidere sau citire din fisier!";
 		exit(1);
