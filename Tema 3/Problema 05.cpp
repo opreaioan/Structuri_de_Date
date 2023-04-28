@@ -32,7 +32,7 @@ int main() {
 }
 
 void citireDate(vector& Numere) {
-	std::ifstream f("NrNumerePb5.txt");
+	std::ifstream f("Problema 05.txt");
 	int nr, Nr = 0;
 	if (!f >> Nr) {
 		std::cout << "Eroare la deschidere sau citire din fisier!";
