@@ -24,7 +24,7 @@ int main()
 }
 
 void citireDate(vector& A, vector& B, vector& C, vector& D) {
-	std::ifstream f("vectoriPb6.txt");
+	std::ifstream f("Problema 06.txt");
 	int a, b, c, d, i, nr;
 	f >> a >> b >> c >> d;
 	i = 0;
