@@ -30,7 +30,7 @@ int main()
 
 void citireDate(vector& v) {
 	float nr;
-	std::ifstream f("floatsPb7.txt");
+	std::ifstream f("Problema 07.txt");
 	while (!f.eof()) {
 		f >> nr;
 		v.push_back(nr);
