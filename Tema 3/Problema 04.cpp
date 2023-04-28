@@ -19,7 +19,7 @@ void competitiv(const map& ac);
 int main()
 {
 	map ac;
-	std::string fisier_liste = "concurentiPb4.txt";
+	std::string fisier_liste = "Problema 04.txt";
 	citireSiruri(fisier_liste, ac);
 	competitiv(ac);
 }
