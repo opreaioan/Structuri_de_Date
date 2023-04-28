@@ -21,7 +21,7 @@ void Anagrame(int cheie, std::string& valoare, tabelaAnagrame& anagrame);
 int main() {
 	tabelaAnagrame anagrame;
 	std::string sir;
-	std::ifstream f("cuvintePb9.txt");
+	std::ifstream f("Problema 09.txt");
 	while (!f.eof()) {
 		f >> sir;
 		Anagrame(string_to_int(sir), sir, anagrame);
