@@ -47,7 +47,7 @@ int main()
 
 void citireMatrice(int**& a, int& nrows, int& ncols)
 {
-	std::ifstream f("matrice.txt");
+	std::ifstream f("Problema 09.txt");
 	f >> nrows >> ncols;
 	a = new int* [nrows];
 	for (int i = 0; i < nrows; i++)
