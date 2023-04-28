@@ -150,8 +150,8 @@ int main()
 	Queue* coada = new Queue;
 
 	int ore, minute, nr_candidati;
-	std::string z1 = "fisInputPb3.txt";
-	std::string z2 = "fisOutputPb3.txt";
+	std::string z1 = "Problema 03 input.txt";
+	std::string z2 = "Problema 03 output.txt";
 
 	readQ(coada, z1, ore, nr_candidati);
 	evaluare(coada, ore);
