@@ -1,3 +1,11 @@
+/*Problema 1 – Arbore sintactic.
+Se citeste din fisier o expresie aritmetica formata din numere, variabile si operatorii de baza (+, -, *, /) si paranteze.
+Ex: 4+x*((5-1+2)*3+2*(y-1))
+a.	Sa se construiasca un arbore sintactic corespunzator expresiei. (2p)
+b.	Sa se afiseze arborele pe niveluri. (0.5p)
+c.	Pentru variabile sa se ceara valori (double) si apoi sa se evalueze expresia.
+Permiteti repetarea acestui pas. (acelasi arbore dar valori diferite pentru variabile) (2p)*/
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -6,7 +14,6 @@
 #include <queue>
 
 typedef std::vector<std::string> vector;
-
 class Nod {
 public:
 	std::string info;
@@ -25,6 +32,7 @@ bool areDoarCifre(std::string s);
 vector FormaPolonezaPostfixata(std::string expresie);
 Nod* ArboreSintactic(vector expresie);
 void afiseazaArbore(Nod* root);
+double evaluare(vector postfixata);
 int hArbore(Nod* rad);
 
 int main() {
@@ -33,16 +41,26 @@ int main() {
 	citireDate(expresie);
 	postfixata = FormaPolonezaPostfixata(expresie);
 	Nod* rad = ArboreSintactic(postfixata);
+	std::cout << "Forma poloneza postfixata: ";
 	for (std::string i : postfixata)
 		std::cout << i << " ";
 	std::cout << "\n";
+	std::cout << "Arborele sintactic: \n";
 	afiseazaArbore(rad);
-	std::cout << "\n\n";
-	std::cout << hArbore(rad);
+	std::cout << "Evaluarea expresiei se va repeta";
+	std::cout << "pana la introducerea caracterului \"0\".\n";
+	std::string optiune;
+	do {
+		std::cout << evaluare(postfixata);
+		std::cout << "\nOptiune>>";
+		std::cin >> optiune;
+		if (std::stoi(optiune) == 0)
+			break;
+	} while (1);
 	return 0;
 }
 void citireDate(std::string& expresie) {
-	std::ifstream f("Problema 01.txt");
+	std::ifstream f("Problema 1.txt");
 	std::getline(f, expresie);
 	//std::cout << expresie;
 }
@@ -152,6 +170,41 @@ void afiseazaArbore(Nod* rad) {
 		}
 		std::cout << "\n";
 	}
+}
+double evaluare(vector postfixata) {
+	std::stack<double> s;
+	for (int i = 0; i < postfixata.size(); i++) {
+		std::string curent = postfixata[i];
+		if (areDoarCifre(curent)) {
+			double operand = std::stod(curent);
+			s.push(operand);
+		}
+		else
+			if (areDoarLitere(curent)) {
+				double operand;
+				std::cout << "introduceti valoarea lui " << curent << " de tip double >> ";
+				std::cin >> operand;
+				s.push(operand);
+			}
+			else {
+				double dreapta = s.top();
+				s.pop();
+				double stanga = s.top();
+				s.pop();
+				if (curent == "+")
+					s.push(stanga + dreapta);
+				else
+					if (curent == "-")
+						s.push(stanga - dreapta);
+					else
+						if (curent == "*")
+							s.push(stanga * dreapta);
+						else
+							if (curent == "/")
+								s.push(stanga / dreapta);
+			}
+	}
+	return s.top();
 }
 int hArbore(Nod* rad) {
 	if (rad == nullptr) {
