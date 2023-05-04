@@ -133,7 +133,6 @@ Nod* ArboreSintactic(vector expresie) {
 	}
 	return s.top();
 }
-//build a function to print the tree in a nice way
 void afiseazaArbore(Nod* rad) {
 	if (rad == nullptr)
 		return;
