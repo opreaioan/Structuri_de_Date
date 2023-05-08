@@ -60,7 +60,7 @@ int main() {
 	return 0;
 }
 void citireDate(std::string& expresie) {
-	std::ifstream f("Problema 1.txt");
+	std::ifstream f("Problema 01.txt");
 	std::getline(f, expresie);
 	//std::cout << expresie;
 }
