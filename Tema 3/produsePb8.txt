@@ -1,0 +1,11 @@
+5
+Magazin_1 5
+		produs_1 produs_2 produs_3 produs_4 produs_5
+Magazin_2 5
+		produs_3 produs_4 produs_5 produs_6 produs_7
+Magazin_3 6
+		produs_1 produs_2 produs_5 produs_8 produs_9 produs_10
+Magazin_4 4
+		produs_11 produs_12 produs_13 produs_14
+Magazin_5 5
+		produs_0 produs_15 produs_16 produs_17 produs_18
