@@ -44,7 +44,7 @@ int main() {
 	return 0;
 }
 void citireProduseMagazine(Magazine& magazine, int& nr_mag, Map_produse& produse) {
-	std::ifstream f("produsePb8.txt");
+	std::ifstream f("Problema 08.txt");
 	if (!f.is_open()) {
 		std::cout << "Eroare la citire din fisier!";
 		exit(1);
