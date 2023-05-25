@@ -219,46 +219,97 @@ public:
 			std::cout << " INVALID INPUT!\n";
 			return;
 		}
+		NOD* par;
+		if (node->p)
+			par = node->p;
+		else
+			par = nullptr;
+
+		/*caz stergere frunza*/
 		if (!node->st && !node->dr) {
-			if (node->p)
-				if (node->p->st == node)
-					node->p->st = nullptr;
+			if (par)
+				if (par->st == node)
+					par->st = nullptr;
 				else
-					node->p->dr = nullptr;
+					par->dr = nullptr;
 			else root = nullptr;
 			delete node;
 		}
 		else
+			/*caz nu are fiu stang*/
 			if (!node->st && node->dr) {
-				if (node->p)
-					if (node->p->st == node) {
-						node->p->st = node->dr;
-						node->dr->p = node->p;
+				if (par)
+					if (par->st == node) {
+						par->st = node->dr;
+						node->dr->p = par;
 					}
 					else {
-						node->p->dr = node->dr;
-						node->dr->p = node->p;
+						par->dr = node->dr;
+						node->dr->p = par;
 					}
 				else
 					root = node->dr;
 				delete node;
 			}
 			else
+				/*caz nu are fiu drept*/
 				if (node->st && !node->dr) {
-					if (node->p)
-						if (node->p->st == node) {
-							node->p->st = node->st;
-							node->st->p = node->p;
+					if (par)
+						if (par->st == node) {
+							par->st = node->st;
+							node->st->p = par;
 						}
 						else {
-							node->p->dr = node->st;
-							node->st->p = node->p;
+							par->dr = node->st;
+							node->st->p = par;
 						}
 					else
 						root = node->st;
 					delete node;
 				}
+				else
+					/*caz are 2 fii*/
+					if (node->st && node->dr) {
+						NOD* successor = SUCCESSOR(node);
+						/*caz 1: daca este succesor direct*/
+						if (node->dr == successor) {
+							if (par)
+								if (par->st == node) {
+									par->st = successor;
+									successor->p = par;
+								}
+								else {
+									par->dr = successor;
+									successor->p = par;
+								}
+							else {
+								root->st->p = successor;
+								successor->st = root->st;
+								root = successor;
+							}
+							delete node;
+						}
+						/*caz 2: daca este succesor indirect*/
+						if (node->dr != successor) {
+							if (par) {
+								if (successor->dr) {
+									successor->p->st = successor->dr;
+									successor->dr->p = successor->p;
+								}
+								if (par->st == node) {
+									successor->st = node->st;
+									successor->dr = node->dr;
+									successor->p = par;
+									par->st = successor;
+								}
+								else
+									if (par->dr == node) {
 
+									}
+							}
+							delete node;
+						}
+					}
 	}
 	void PRINT_TREE(int opt) {
 
@@ -314,7 +365,7 @@ int main() {
 		std::cout << " Option >> ";
 		std::cin >> opt;
 		switch (opt) {
-			/*1. INSERT*/
+			/*1 - INSERT*/
 		case 1: {
 			std::cout << " Insert node key >> ";
 			int key;
@@ -322,7 +373,7 @@ int main() {
 			T.INSERT(key);
 			break;
 		}
-			  /*2. MAXIM*/
+			  /*2 - MAXIM*/
 		case 2: {
 			std::cout << " Subtree root >> ";
 			int subRootKey;
@@ -331,7 +382,7 @@ int main() {
 				std::cout << " " << T.MAXIM(T.FIND(subRootKey))->key << "\n";
 			break;
 		}
-			  /*3. MINIM*/
+			  /*3 - MINIM*/
 		case 3: {
 			std::cout << " Subtree root >> ";
 			int subRootKey;
@@ -340,7 +391,7 @@ int main() {
 				std::cout << " " << T.MINIM(T.FIND(subRootKey))->key << "\n";
 			break;
 		}
-			  /*4. SUCCESOR*/
+			  /*4 - SUCCESOR*/
 		case 4: {
 			std::cout << " Insert node key >> ";
 			int key;
@@ -349,7 +400,7 @@ int main() {
 				std::cout << " " << T.SUCCESSOR(T.FIND(key))->key << "\n";
 			break;
 		}
-			  /*5. PREDECESOR*/
+			  /*5 - PREDECESOR*/
 		case 5: {
 			std::cout << " Insert node key >> ";
 			int key;
@@ -358,7 +409,7 @@ int main() {
 				std::cout << " " << T.PREDECESSOR(T.FIND(key))->key << "\n";
 			break;
 		}
-			  /*6.FIND*/
+			  /* 6 - FIND*/
 		case 6: {
 			if (T.FIND(5)) {
 				NOD* x = T.FIND(5);
@@ -368,7 +419,7 @@ int main() {
 				std::cout << " Negasit\n";
 			break;
 		}
-			  /*7.DELETE*/
+			  /*7 - DELETE*/
 		case 7: {
 			std::cout << " Insert node key >> ";
 			int key;
@@ -376,9 +427,11 @@ int main() {
 			T.DELETE(key);
 			break;
 		}
+			  /*8 - ERASE*/
 		case 8: {
 
 		}
+			  /*9 - PRINT TREE*/
 		case 9: {
 			std::cout
 				<< " 1-DFS:Preorder (RSD)\n"
@@ -390,6 +443,18 @@ int main() {
 			int prtOpt;
 			std::cin >> prtOpt;
 			T.PRINT_TREE(prtOpt);
+
+		}
+			  /*10 - CONSTRUCT*/
+		case 10: {
+
+		}
+			   /*11 - EMPTY*/
+		case 11: {
+
+		}
+			   /*12 - CLEAR*/
+		case 12: {
 
 		}
 		}
